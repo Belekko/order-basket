@@ -1,9 +1,12 @@
-import React from 'react'
-
-const Input = () => {
+import React from 'react';
+import classes from './input.module.css';
+const Input = (props) => {
   return (
-    <input></input>
-  )
-}
+    <div className={classes.input}>
+      <label htmlFor={props.input.id}>{props.label}</label>
+      <input {...props.input} />
+    </div>
+  );
+};
 
-export default Input
+export default Input;
