@@ -9,7 +9,7 @@ const Backdrop = (props) => {
 const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>
-      <div className={classes.content}>{props.chldren}</div>
+      <div className={classes.content}>{props.children}</div>
     </div>
   );
 };
@@ -17,6 +17,7 @@ const ModalOverlay = (props) => {
 const portalElement = document.getElementById('overlays');
 
 const Modal = (props) => {
+
   return (
     <>
       {createPortal(<Backdrop />, portalElement)}
