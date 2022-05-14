@@ -7,7 +7,6 @@ const defaultCartState = {
 };
 
 const cartReducer = (prevState, action) => {
-  console.log(action)
   if (action.type === 'ADD') {
     const updatedItems = prevState.items.concat(action.item);
 
