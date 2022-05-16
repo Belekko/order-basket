@@ -5,14 +5,14 @@ import classes from './Cart.module.css';
 import CartItems from './CartItems';
 
 const Cart = (props) => {
-  const {totalAmount}= useContext(CartContext)
+  const ctx= useContext(CartContext)
 
   return (
     <Modal onCloseCart={props.onCloseCart}>
       <CartItems />
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>{totalAmount}</span>
+        <span>{ctx.totalAmount.toFixed(2)}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onCloseCart}>

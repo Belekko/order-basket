@@ -7,17 +7,30 @@ const defaultCartState = {
 };
 
 const cartReducer = (prevState, action) => {
-  console.log(action)
   if (action.type === 'ADD') {
-    const updatedItems = prevState.items.concat(action.item);
+    const currentIndex = prevState.items.findIndex((el) => el.id == action.item.id);
+    console.log(currentIndex);
+    if (currentIndex === -1) {
+      const updatedItems = prevState.items.concat(action.item);
 
-    const updatedTotalAmount = prevState.totalAmount + action.item.price * action.item.amount;
-
-    console.log(prevState )
-    return {
-      items: updatedItems,
-      totalAmount: updatedTotalAmount,
-    };
+      const updatedTotalAmount = prevState.totalAmount + action.item.price * action.item.amount;
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+      };
+    } else {
+      const updatedTotalAmount = prevState.totalAmount + action.item.price * action.item.amount;
+      const updatedItems = prevState.items.map((el, idx) => {
+        return idx === currentIndex
+          ? { ...el, price: el.price + action.item.price * action.item.amount , amount: el.amount + action.item.amount }
+          : el;
+        
+      });
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+      };
+    }
   }
 
   return defaultCartState;
@@ -31,13 +44,14 @@ const CartProvider = (props) => {
   };
 
   const removeItemFromCartHandler = (id) => {};
-
+  console.log(cartState);
   const cartContext = {
     items: cartState.items,
-    totalAmount: 0,
+    totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
   };
+  console.log(cartContext);
 
   return <CartContext.Provider value={cartContext}>{props.children}</CartContext.Provider>;
 };

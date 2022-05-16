@@ -3,13 +3,12 @@ import { CartContext } from '../../store/cart-context';
 import CartItem from './CartItem.jsx'
 import classes from './CartItems.module.css';
 
-const CartItems = () => {
-  const { items,totalAmount } = useContext(CartContext);
-
+const CartItems = () => { 
+  const { items} = useContext(CartContext);
   return (
     <ul className={classes['cart-items']}>
-      {items.map((item) => (
-        <CartItem key={item.id} name={item.name} price={item.price} />
+      {items.map((item,id) => (
+        <CartItem key={id} name={item.name} price={item.price} amount={item.amount}/>
       ))}
     </ul>
   );

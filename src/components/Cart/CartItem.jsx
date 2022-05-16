@@ -6,7 +6,8 @@ const CartItem = (props) => {
     <li className={classes.total}>
       <span>{props.name}</span>
       <span>{props.amount}</span>
-      <span>{props.price}</span>
+      <span>{props.price.toFixed(2)}</span>
+      {console.log(props)}
     </li>
   );
 };
