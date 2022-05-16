@@ -7,8 +7,8 @@ const CartItems = () => {
   const { items} = useContext(CartContext);
   return (
     <ul className={classes['cart-items']}>
-      {items.map((item,id) => (
-        <CartItem key={id} name={item.name} price={item.price} amount={item.amount}/>
+      {items.map((item) => (
+        <CartItem key={item.id} name={item.name} price={item.price} amount={item.amount}/>
       ))}
     </ul>
   );

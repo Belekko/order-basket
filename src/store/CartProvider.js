@@ -8,11 +8,9 @@ const defaultCartState = {
 
 const cartReducer = (prevState, action) => {
   if (action.type === 'ADD') {
-    const currentIndex = prevState.items.findIndex((el) => el.id == action.item.id);
-    console.log(currentIndex);
+    const currentIndex = prevState.items.findIndex((el) => el.id === action.item.id);
     if (currentIndex === -1) {
       const updatedItems = prevState.items.concat(action.item);
-
       const updatedTotalAmount = prevState.totalAmount + action.item.price * action.item.amount;
       return {
         items: updatedItems,
@@ -35,8 +33,7 @@ const cartReducer = (prevState, action) => {
       };
     }
   }
-
-  return defaultCartState;
+  return prevState;
 };
 
 const CartProvider = (props) => {
@@ -46,16 +43,14 @@ const CartProvider = (props) => {
     dispatchCart({ type: 'ADD', item: item });
   };
 
-  const removeItemFromCartHandler = (id) => {};
-  console.log(cartState);
+  const removeItemFromCartHandler = (id) => {
+  };
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
   };
-  console.log(cartContext);
-
   return <CartContext.Provider value={cartContext}>{props.children}</CartContext.Provider>;
 };
 

@@ -5,7 +5,7 @@ import classes from './Cart.module.css';
 import CartItems from './CartItems';
 
 const Cart = (props) => {
-  const ctx= useContext(CartContext)
+  const ctx = useContext(CartContext);
 
   return (
     <Modal onCloseCart={props.onCloseCart}>
