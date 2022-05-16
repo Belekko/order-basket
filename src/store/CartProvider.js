@@ -22,9 +22,12 @@ const cartReducer = (prevState, action) => {
       const updatedTotalAmount = prevState.totalAmount + action.item.price * action.item.amount;
       const updatedItems = prevState.items.map((el, idx) => {
         return idx === currentIndex
-          ? { ...el, price: el.price + action.item.price * action.item.amount , amount: el.amount + action.item.amount }
+          ? {
+              ...el,
+              price: el.price + action.item.price * action.item.amount,
+              amount: el.amount + action.item.amount,
+            }
           : el;
-        
       });
       return {
         items: updatedItems,
