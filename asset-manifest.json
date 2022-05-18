@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/order-basket/static/css/main.4335b485.css",
+    "main.js": "/order-basket/static/js/main.c238c382.js",
+    "static/media/meals.jpg": "/order-basket/static/media/meals.46a522b40fd53b469b50.jpg",
+    "index.html": "/order-basket/index.html",
+    "main.4335b485.css.map": "/order-basket/static/css/main.4335b485.css.map",
+    "main.c238c382.js.map": "/order-basket/static/js/main.c238c382.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4335b485.css",
+    "static/js/main.c238c382.js"
+  ]
+}
